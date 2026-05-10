@@ -1,0 +1,17 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: lab1_pg
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: lab1
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./mock_data:/mock_data
+      - ./scripts:/docker-entrypoint-initdb.d
+
+volumes:
+  postgres_data:
